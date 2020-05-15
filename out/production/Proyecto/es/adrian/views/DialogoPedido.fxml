@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.adrian.views.DialogoPedidoController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <TableView fx:id="tableViewProductos" layoutX="48.0" layoutY="25.0" prefHeight="343.0" prefWidth="286.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+              <columns>
+                <TableColumn prefWidth="107.0" text="Producto">
+                    <cellValueFactory><PropertyValueFactory property="nombreProducto" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="72.0" text="Precio">
+                    <cellValueFactory><PropertyValueFactory property="precio" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="105.0" text="Categoría">
+                    <cellValueFactory><PropertyValueFactory property="categoria" />
+                    </cellValueFactory>
+                </TableColumn>
+              </columns>
+            </TableView>
+            <Button layoutX="178.0" layoutY="350.0" mnemonicParsing="false" onAction="#salirTicket" prefHeight="40.0" prefWidth="103.0" text="SALIR" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="55.0" text="Producto: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0" />
+            <TextField fx:id="productoTf" layoutX="74.0" layoutY="10.0" prefHeight="25.0" prefWidth="100.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="10.0" />
+            <Label layoutX="14.0" layoutY="42.0" prefHeight="25.0" prefWidth="55.0" text="Cantidad: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="42.0" />
+            <TextField fx:id="cantidadTf" layoutX="74.0" layoutY="52.0" prefHeight="25.0" prefWidth="100.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="45.0" />
+            <TableView fx:id="tableViewPedidos" layoutX="14.0" layoutY="127.0" prefHeight="275.0" prefWidth="286.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0">
+              <columns>
+                <TableColumn prefWidth="142.0" text="Producto">
+                    <cellValueFactory><PropertyValueFactory property="producto" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="142.0" text="Cantidad">
+                    <cellValueFactory><PropertyValueFactory property="cantidad" />
+                    </cellValueFactory>
+                </TableColumn>
+              </columns>
+            </TableView>
+            <Button fx:id="botonPedir" layoutX="182.0" layoutY="5.0" mnemonicParsing="false" onAction="#pedirProducto" prefHeight="60.0" prefWidth="55.0" text="Pedir" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="10.0" />
+            <Button layoutX="92.0" layoutY="366.0" mnemonicParsing="false" onAction="#pagarTicket" prefHeight="40.0" prefWidth="103.0" text="PAGAR" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+            <Button fx:id="botonQuitar" layoutX="236.0" layoutY="10.0" mnemonicParsing="false" onAction="#quitarProducto" prefHeight="60.0" prefWidth="55.0" text="Quitar" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
+            <TextField fx:id="totalTf" layoutX="80.0" layoutY="353.0" prefHeight="40.0" prefWidth="100.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="80.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Label alignment="CENTER_RIGHT" layoutX="5.0" layoutY="357.0" prefHeight="40.0" prefWidth="64.0" text="TOTAL: " textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.adrian.views.DialogoMesaController">
+   <children>
+      <AnchorPane prefHeight="403.0" prefWidth="614.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <ButtonBar layoutX="246.0" prefHeight="54.0" prefWidth="358.0" AnchorPane.bottomAnchor="346.0" AnchorPane.leftAnchor="246.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
+              <buttons>
+                  <Label minWidth="52.0" prefHeight="0.0" text="MESAS: ">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding></Label>
+                <Button fx:id="botonAdd" mnemonicParsing="false" onAction="#addMesa" text="Nueva" />
+                  <Button fx:id="botonModificar" layoutX="135.0" layoutY="18.0" mnemonicParsing="false" onAction="#modificarMesa" text="Modificar" />
+                  <Button fx:id="botonBorrar" layoutX="50.0" layoutY="18.0" mnemonicParsing="false" onAction="#borrarMesa" text="Borrar" />
+              </buttons>
+            </ButtonBar>
+            <TableView fx:id="tableViewMesas" layoutY="53.0" prefHeight="287.0" prefWidth="594.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="54.0">
+              <columns>
+                  <TableColumn prefWidth="105.0" text="Número">
+                      <cellValueFactory><PropertyValueFactory property="id" />
+                      </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="382.0" text="Localización">
+                      <cellValueFactory><PropertyValueFactory property="localizacion" />
+                      </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn minWidth="4.0" prefWidth="105.0" text="Capacidad">
+                      <cellValueFactory><PropertyValueFactory property="capacidad" />
+                      </cellValueFactory>
+                  </TableColumn>
+              </columns>
+            </TableView>
+            <Button fx:id="botonAbrirTicket" layoutX="14.0" layoutY="328.0" mnemonicParsing="false" onAction="#nuevoTicket" prefHeight="40.0" prefWidth="100.0" text="ABRIR TICKET" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+            <Button layoutX="504.0" layoutY="350.0" mnemonicParsing="false" onAction="#verCarta" prefHeight="40.0" prefWidth="100.0" text="CARTA" />
+            <Button fx:id="botonVerTickets" layoutX="390.0" layoutY="350.0" mnemonicParsing="false" onAction="#verTicket" prefHeight="40.0" prefWidth="100.0" text="VER TICKETS" />
+            <Label layoutX="24.0" layoutY="19.0" text="Selecciona una mesa: " AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="13.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

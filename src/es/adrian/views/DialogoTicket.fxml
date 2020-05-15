@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.adrian.views.DialogoTicketController">
+   <children>
+      <TableView fx:id="tableViewTickets" prefHeight="221.0" prefWidth="356.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <columns>
+          <TableColumn prefWidth="57.0" text="Número">
+              <cellValueFactory><PropertyValueFactory property="numero" />
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn prefWidth="181.0" text="Fecha">
+              <cellValueFactory><PropertyValueFactory property="fecha" />
+              </cellValueFactory>
+          </TableColumn>
+            <TableColumn prefWidth="48.0" text="Mesa">
+                <cellValueFactory><PropertyValueFactory property="idMesa" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="68.0" text="Estado">
+                <cellValueFactory><PropertyValueFactory property="estado" />
+                </cellValueFactory>
+            </TableColumn> 
+        </columns>
+      </TableView>
+      <Button fx:id="botonReabrir" layoutX="466.0" layoutY="347.0" mnemonicParsing="false" onAction="#reabrirTicket" prefHeight="35.0" prefWidth="120.0" text="REABRIR TICKET" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="10.0" />
+      <TableView fx:id="tableViewConsumicionesTicket" layoutX="386.0" layoutY="14.0" prefHeight="276.0" prefWidth="204.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="366.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <columns>
+          <TableColumn prefWidth="153.0" text="Producto">
+              <cellValueFactory><PropertyValueFactory property="Producto" />
+              </cellValueFactory>
+          </TableColumn>
+          <TableColumn prefWidth="74.0" text="Cantidad">
+              <cellValueFactory><PropertyValueFactory property="cantidad" />
+              </cellValueFactory>
+          </TableColumn>
+        </columns>
+      </TableView>
+      <DatePicker fx:id="fechaInicio" layoutX="102.0" layoutY="284.0" prefHeight="25.0" prefWidth="126.0" AnchorPane.bottomAnchor="58.0" />
+      <DatePicker fx:id="fechaFinal" layoutX="102.0" layoutY="319.0" prefHeight="25.0" prefWidth="126.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="102.0" />
+      <Label layoutX="14.0" layoutY="257.0" text="Filtrar por fechas: " AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="10.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="286.0" text="Fecha inicial: " AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="10.0" layoutY="321.0" text="Fecha final: " AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="10.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

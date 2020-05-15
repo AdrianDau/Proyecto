@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.5936454849498328" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.adrian.views.DialogoCartaController">
+  <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="352.0">
+          <children>
+              <TableView fx:id="listaProductos" prefHeight="343.0" prefWidth="339.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <columns>
+                      <TableColumn prefWidth="128.0" text="Nombre">
+                          <cellValueFactory><PropertyValueFactory property="nombreProducto" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn prefWidth="64.0" text="Precio">
+                          <cellValueFactory><PropertyValueFactory property="precio" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn prefWidth="148.0" text="Categoria">
+                          <cellValueFactory><PropertyValueFactory property="categoria" />
+                          </cellValueFactory>
+                      </TableColumn>
+                  </columns>
+              </TableView>
+              <Button fx:id="botonModificar" layoutX="16.0" layoutY="360.0" mnemonicParsing="false" onAction="#modificarProducto" prefHeight="30.0" prefWidth="72.0" text="Modificar" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" />
+              <Button fx:id="botonBorrar" layoutX="131.0" layoutY="363.0" mnemonicParsing="false" onAction="#borrarProducto" prefHeight="30.0" prefWidth="72.0" text="Borrar" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="92.0" />
+          </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="289.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="70.0" text="Producto: " AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="15.0" />
+            <TextField fx:id="productoTf" layoutX="14.0" layoutY="31.0" prefHeight="30.0" prefWidth="160.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0" />
+            <Label layoutX="24.0" layoutY="78.0" prefHeight="30.0" prefWidth="70.0" text="Precio:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="95.0" />
+            <TextField fx:id="precioTf" layoutX="20.0" layoutY="121.0" prefHeight="30.0" prefWidth="160.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="130.0" />
+            <Label layoutX="28.0" layoutY="238.0" prefHeight="30.0" prefWidth="70.0" text="Categoría:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="175.0" />
+            <ComboBox fx:id="categoriasCb" layoutX="16.0" layoutY="280.0" prefHeight="30.0" prefWidth="160.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="210.0" />
+            <Button fx:id="botonAñadir" layoutX="17.0" layoutY="330.0" mnemonicParsing="false" onAction="#addModificarProducto" prefHeight="30.0" prefWidth="72.0" text="Añadir" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="280.0" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
