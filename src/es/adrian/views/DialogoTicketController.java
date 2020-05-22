@@ -55,6 +55,8 @@ public class DialogoTicketController extends BaseController implements Initializ
             tableViewTickets.refresh();
             DialogoPedidoController controller = (DialogoPedidoController) cargarDialogo("DialogoPedido.fxml");
             controller.setTicket(ticket);
+            controller.getStage().setMinHeight(450);
+            controller.getStage().setMinWidth(650);
             controller.mostrarDialogo(true);
             tableViewTickets.getSelectionModel().clearSelection();
             tableViewTickets.refresh();
@@ -74,7 +76,6 @@ public class DialogoTicketController extends BaseController implements Initializ
     public void initialize(URL url, ResourceBundle resourceBundle) {
             ticketFilter = FXCollections.observableArrayList();
             filterDate = new FilterDate(ticketFilter);
-            botonReabrir.setDisable(true);
 
             tableViewTickets.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Ticket>() {
                 @Override
@@ -84,13 +85,16 @@ public class DialogoTicketController extends BaseController implements Initializ
                     if (index >= 0 && index < tableViewTickets.getItems().size()) {
                         ObservableList<Consumicion> lista = FXCollections.observableArrayList(ticketSelect.getListaConsumiciones());
                         tableViewConsumicionesTicket.setItems(lista);
+                        boolean activarBoton = false;
 
                         for(Ticket t: ticketFilter) {
                             if(t.getEstado().equals(Estado.ABIERTO)) {
-                                botonReabrir.setDisable(true);
-                            } else
-                                botonReabrir.setDisable(false);
+                                activarBoton = true;
+
+                            }
+
                         }
+                        botonReabrir.setDisable(activarBoton);
                     }
                     tableViewConsumicionesTicket.refresh();
                 }

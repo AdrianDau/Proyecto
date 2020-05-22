@@ -4,18 +4,27 @@ import es.adrian.logic.Logica;
 import es.adrian.models.Estado;
 import es.adrian.models.Mesa;
 import es.adrian.models.Ticket;
+import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.VBox;
+import jfxtras.styles.jmetro.Style;
+import jfxtras.styles.jmetro.JMetro;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DialogoMesaController extends BaseController implements Initializable {
+
+    @FXML
+    private VBox vbox;
 
     @FXML
     private TableView<Mesa> tableViewMesas;
@@ -31,6 +40,9 @@ public class DialogoMesaController extends BaseController implements Initializab
 
     @FXML
     private Button botonBorrar;
+
+    @FXML
+    private ComboBox<Style> estilosCb;
 
     @FXML
     void addMesa(ActionEvent event) {
@@ -55,6 +67,8 @@ public class DialogoMesaController extends BaseController implements Initializab
     @FXML
     public void verCarta(ActionEvent event) {
         BaseController controller = cargarDialogo("DialogoCarta.fxml");
+        controller.getStage().setMinHeight(450);
+        controller.getStage().setMinWidth(650);
         controller.mostrarDialogo(true);
     }
 
@@ -67,6 +81,8 @@ public class DialogoMesaController extends BaseController implements Initializab
             DialogoPedidoController dpController = (DialogoPedidoController) cargarDialogo("DialogoPedido.fxml");
             dpController.setTicket(ticket);
             System.out.println(ticket.getNumero() + " " + ticket.getIdMesa() + " " + ticket.getFecha() + " " + ticket.getEstado());
+            dpController.getStage().setMinHeight(450);
+            dpController.getStage().setMinWidth(650);
             dpController.mostrarDialogo(true);
         }
         else {
@@ -102,6 +118,29 @@ public class DialogoMesaController extends BaseController implements Initializab
                }
            }
        });
+
+       try {
+           estilosCb.getItems().addAll(Style.DARK, Style.LIGHT);
+//           estilosCb.getSelectionModel().select(Style.valueOf(Application.getUserAgentStylesheet()));
+           estilosCb.setOnAction(new EventHandler<ActionEvent>() {
+               @Override
+               public void handle(ActionEvent event) {
+                   if (estilosCb.getSelectionModel().getSelectedItem() != null) {
+                       new JMetro(getStage().getScene(), estilosCb.getSelectionModel().getSelectedItem());
+                   }
+               }
+           });
+//           estilosCb.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Style>() {
+//               @Override
+//               public void changed(ObservableValue<? extends Style> observableValue, Style style, Style estilo) {
+//
+//               }
+//           });
+       } catch (Exception e) {
+           System.out.println("Aaa");
+       }
+
+
 
     }
 

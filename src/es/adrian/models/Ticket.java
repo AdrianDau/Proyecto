@@ -21,6 +21,14 @@ public class Ticket {
         this.listaConsumiciones = new ArrayList<>();
     }
 
+    public Ticket(int numero, Date fecha, int idMesa) {
+        this.numero = numero;
+        this.fecha = fecha;
+        this.idMesa = idMesa;
+        this.estado = Estado.CERRADO;
+        this.listaConsumiciones = new ArrayList<>();
+    }
+
     public int getNumero() {
         return numero;
     }

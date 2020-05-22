@@ -135,7 +135,7 @@ public class DialogoPedidoController extends BaseController implements Initializ
         ValidationSupport validationSupport = new ValidationSupport();
 
         validationSupport.registerValidator(productoTf, Validator.createEmptyValidator("Este campo no puede estar vacío", Severity.ERROR));
-//        validationSupport.registerValidator(cantidadTf, Validator.createRegexValidator("Solo números", "[0-9]+", Severity.ERROR));
+        validationSupport.registerValidator(cantidadTf, Validator.createRegexValidator("Solo números", "[0-9]+", Severity.ERROR));
 
         botonPedir.disableProperty().bind(validationSupport.invalidProperty());
 

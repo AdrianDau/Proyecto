@@ -1,9 +1,11 @@
 package es.adrian.logic;
 
 import es.adrian.models.*;
+import es.adrian.utils.DateUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.*;
 import java.util.List;
 
 public class Logica {
@@ -16,14 +18,18 @@ public class Logica {
 
     private Logica() {
         listaMesas = FXCollections.observableArrayList();
-        listaMesas.add(new Mesa(1, "Primera por la derecha", 4));
-        listaMesas.add(new Mesa(2, "Segunda por la derecha", 6));
+        cargarMesas();
 
         listaProductos = FXCollections.observableArrayList();
-        listaProductos.add(new Producto("Macarrones", 6.25, Categoria.PRIMERPLATO));
-        listaProductos.add(new Producto("Agua", 2.00, Categoria.BEBIDAS));
+        cargarProductos();
+//        listaProductos.add(new Producto("Macarrones", 6.25, Categoria.PRIMERPLATO));
+//        listaProductos.add(new Producto("Agua", 2.00, Categoria.BEBIDAS));
 
         listaTickets = FXCollections.observableArrayList();
+        listaTickets.add(new Ticket(1, DateUtils.createNewDate("05/12/2020 17:30:00") ,1));
+        listaTickets.add(new Ticket(2, DateUtils.createNewDate("05/22/2020 14:20:20") ,1));
+        listaTickets.add(new Ticket(3, DateUtils.createNewDate("05/10/2020 13:30:00") ,2));
+        listaTickets.add(new Ticket(4, DateUtils.createNewDate("05/16/2020 19:20:20") ,2));
 
         listaConsumiciones = FXCollections.observableArrayList();
     }
@@ -41,6 +47,7 @@ public class Logica {
 
     public void añadirMesa(Mesa mesa) {
         listaMesas.add(mesa);
+
     }
 
     public void modificarMesa(Mesa mesa) {
@@ -50,6 +57,39 @@ public class Logica {
 
     public void borrarMesa(int indice) {
         listaMesas.remove(indice);
+    }
+
+    public int maxValorListaMesas() {
+        int maximo = 0;
+        for(int i = 0; i < listaMesas.size(); i++) {
+            if(maximo < listaMesas.get(i).getId()) {
+                maximo = listaMesas.get(i).getId();
+            }
+        }
+        return maximo +1;
+    }
+
+    private void cargarMesas(){
+        try {
+            File fichero = new File("C:\\Users\\AdrianDau\\Desktop\\Mesas.csv");
+            FileReader fr = new FileReader(fichero);
+            BufferedReader bf = new BufferedReader(fr);
+            String linea;
+            while((linea = bf.readLine()) != null) {
+                String[] parts = linea.split(";");
+                String part1 = parts[0];
+                String part2 = parts[1];
+                String part3 = parts[2];
+
+                Mesa mesa = new Mesa(Integer.parseInt(part1), part2, Integer.parseInt(part3));
+                listaMesas.add(mesa);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public ObservableList<Producto> getListaProductos() {
@@ -69,6 +109,29 @@ public class Logica {
         listaProductos.remove(indice);
     }
 
+    private void cargarProductos() {
+        try {
+            File fichero = new File("C:\\Users\\AdrianDau\\Desktop\\Productos.csv");
+            FileReader fr = new FileReader(fichero);
+            BufferedReader bf = new BufferedReader(fr);
+            String linea;
+            while((linea = bf.readLine()) != null) {
+                String[] parts = linea.split(";");
+                String part1 = parts[0];
+                String part2 = parts[1];
+                String part3 = parts[2];
+
+                Producto producto = new Producto(part1, Double.parseDouble(part2), Categoria.valueOf(part3));
+                listaProductos.add(producto);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public ObservableList<Ticket> getListaTickets() {
         return listaTickets;
     }
@@ -86,17 +149,10 @@ public class Logica {
 
             }
         }
-        int idTicket = maxValorListaTickets() + 1;
+        int idTicket = maxValorListaTickets();
         int idMesa = mesa.getId();
         ticketAux = new Ticket(idTicket, idMesa);
         listaTickets.add(ticketAux);
-
-//        if(ticketAux == null) {
-//            int idTicket = maxValorListaTickets() + 1;
-//            int idMesa = mesa.getId();
-//            ticketAux = new Ticket(idTicket, idMesa);
-//            listaTickets.add(ticketAux);
-//        }
 
         return ticketAux;
     }
@@ -139,5 +195,9 @@ public class Logica {
 
     public void borrarConsumicion(int indice) {
         listaConsumiciones.remove(indice);
+    }
+
+    public void finalizar() {
+        INSTANCE = null;
     }
 }

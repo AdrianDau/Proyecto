@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.adrian.views.DialogoMesaController">
+<VBox fx:id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.adrian.views.DialogoMesaController">
    <children>
       <AnchorPane prefHeight="403.0" prefWidth="614.0">
          <VBox.margin>
@@ -48,6 +48,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <ComboBox fx:id="estilosCb" layoutX="148.0" layoutY="350.0" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </children>

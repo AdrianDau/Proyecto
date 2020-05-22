@@ -1,5 +1,6 @@
 package es.adrian.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -12,10 +13,15 @@ public class DateUtils
     private static DateTimeFormatter simple_day_month_formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
     private static DateTimeFormatter day_and_hour_formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
 
-    public static String createNewDate() {
-        String pattern = "MM-dd-yyyy HH:mm:ss";
+    public static Date createNewDate(String fecha) {
+        String pattern = "MM/dd/yyyy HH:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        return simpleDateFormat.format(new Date());
+        try {
+            return simpleDateFormat.parse(fecha);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
 
     }
 

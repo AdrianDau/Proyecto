@@ -36,7 +36,7 @@ public class DialogoCartaController extends BaseController implements Initializa
     private TextField precioTf;
 
     @FXML
-    private Button botonAñadir;
+    private Button botonAñadirProducto;
 
     @FXML
     private Button botonModificar;
@@ -101,8 +101,6 @@ public class DialogoCartaController extends BaseController implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        getStage().setMinWidth(800);
-        getStage().setMaxHeight(800);
         listaProductos.setItems(Logica.getInstance().getListaProductos());
 
         categoriasCb.getItems().setAll(Categoria.values());
@@ -122,11 +120,10 @@ public class DialogoCartaController extends BaseController implements Initializa
 
         ValidationSupport validationSupport = new ValidationSupport();
 
-//        validationSupport.registerValidator(productoTf, Validator.createEmptyValidator("Este campo no puede estar vacío", Severity.ERROR));
-//        validationSupport.registerValidator(precioTf, Validator.createEmptyValidator("Este campo no puede estar vacío"));
-//        validationSupport.registerValidator(precioTf, Validator.createRegexValidator("Formato: números.números", "\\d+\\.\\d+", Severity.ERROR));
-//        validationSupport.registerValidator(categoriasCb, Validator.createEmptyValidator("Este campo no puede estar vacío"));
+        validationSupport.registerValidator(productoTf, Validator.createEmptyValidator("Este campo no puede estar vacío", Severity.ERROR));
+        validationSupport.registerValidator(precioTf, Validator.createRegexValidator("Formato: números.números", "\\d+\\.\\d+", Severity.ERROR));
+        validationSupport.registerValidator(categoriasCb, Validator.createEmptyValidator("Este campo no puede estar vacío"));
 
-        botonAñadir.disableProperty().bind(validationSupport.invalidProperty());
+        botonAñadirProducto.disableProperty().bind(validationSupport.invalidProperty());
     }
 }

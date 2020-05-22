@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="controlsfx-8.40.17-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../CONTROLSFX/controlsfx-master/controlsfx/build/libs/controlsfx-8.40.17-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
